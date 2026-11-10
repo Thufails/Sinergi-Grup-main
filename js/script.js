@@ -66,6 +66,45 @@ document.querySelectorAll(".currentYear").forEach(function (element) {
     element.textContent = new Date().getFullYear();
 });
 
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+if ("IntersectionObserver" in window && !prefersReducedMotion) {
+    const revealTargets = document.querySelectorAll(
+        "main > section, .featured-article, .service-card, .service-card-secondary, " +
+        ".program-card, .team-card, .gallery-item, .editorial-card, .approach-step"
+    );
+
+    document.body.classList.add("motion-enabled");
+    revealTargets.forEach(function (element) {
+        element.classList.add("reveal-on-scroll");
+    });
+
+    document.querySelectorAll(
+        ".service-grid, .service-grid-secondary, .program-grid, .program-card-grid, " +
+        ".team-grid, .gallery-grid, .editorial-grid, .approach-steps"
+    ).forEach(function (group) {
+        Array.from(group.children).forEach(function (element, index) {
+            element.style.setProperty("--reveal-delay", Math.min(index, 4) * 70 + "ms");
+        });
+    });
+
+    const revealObserver = new IntersectionObserver(function (entries, observer) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.12,
+        rootMargin: "0px 0px -36px 0px"
+    });
+
+    revealTargets.forEach(function (element) {
+        revealObserver.observe(element);
+    });
+}
+
 const contactForm = document.getElementById("contactForm");
 
 if (contactForm) {

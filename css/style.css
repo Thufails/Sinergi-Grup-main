@@ -81,7 +81,7 @@ textarea {
     gap: 10px;
     margin: 0 0 16px;
     color: #627957;
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 700;
     letter-spacing: .15em;
     text-transform: uppercase;
@@ -108,7 +108,7 @@ textarea {
 .topbar {
     color: rgba(255, 255, 255, .78);
     background: var(--forest-deep);
-    font-size: 11px;
+    font-size: 13px;
     letter-spacing: .025em;
 }
 
@@ -160,7 +160,7 @@ textarea {
 .navigation a {
     position: relative;
     color: #46534a;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
     white-space: nowrap;
     transition: color .2s ease, background .2s ease;
@@ -317,11 +317,11 @@ textarea {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 13px;
+    gap: 0;
     padding: 11px 18px;
     border: 1px solid transparent;
     border-radius: 5px;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 700;
     transition: background .2s ease, color .2s ease, transform .2s ease;
 }
@@ -355,7 +355,7 @@ textarea {
 
 .hero-proof p {
     color: rgba(255, 255, 255, .68);
-    font-size: 11px;
+    font-size: 13px;
     line-height: 1.6;
 }
 
@@ -392,7 +392,7 @@ textarea {
     bottom: 19px;
     left: 22px;
     color: var(--white);
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing: .1em;
     text-transform: uppercase;
 }
@@ -403,7 +403,7 @@ textarea {
     gap: 16px;
     padding-bottom: 19px;
     color: rgba(255, 255, 255, .54);
-    font-size: 9px;
+    font-size: 10px;
     letter-spacing: .12em;
     text-transform: uppercase;
 }
@@ -456,14 +456,14 @@ textarea {
     max-width: 205px;
     margin-top: 7px;
     color: var(--muted);
-    font-size: 10px;
+    font-size: 11px;
     line-height: 1.55;
 }
 
 .trust-note p {
     max-width: 180px;
     margin: 0;
-    font-size: 11px;
+    font-size: 13px;
 }
 
 .clients-section {
@@ -562,7 +562,7 @@ textarea {
     background: transparent;
     color: var(--forest);
     cursor: pointer;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 600;
 }
 
@@ -605,7 +605,7 @@ textarea {
     gap: 10px;
     margin-top: 24px;
     color: #737e74;
-    font-size: 9px;
+    font-size: 10px;
     letter-spacing: .12em;
 }
 
@@ -641,27 +641,16 @@ textarea {
     max-width: 730px;
     margin: 0;
     color: var(--muted);
-    font-size: 13px;
+    font-size: 15px;
     line-height: 1.8;
 }
 
 .text-link {
     display: inline-flex;
     align-items: center;
-    gap: 9px;
     color: var(--forest);
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 700;
-}
-
-.text-link span {
-    color: #718c65;
-    font-size: 15px;
-    transition: transform .2s ease;
-}
-
-.text-link:hover span {
-    transform: translate(3px, -2px);
 }
 
 .section-heading {
@@ -679,7 +668,7 @@ textarea {
     max-width: 650px;
     margin-top: 13px;
     color: var(--muted);
-    font-size: 13px;
+    font-size: 15px;
     line-height: 1.75;
 }
 
@@ -695,7 +684,7 @@ textarea {
     max-width: 360px;
     padding-bottom: 5px;
     color: var(--muted);
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.75;
 }
 
@@ -765,13 +754,8 @@ textarea {
 
 .service-number {
     color: #778575;
-    font-size: 9px;
+    font-size: 10px;
     letter-spacing: .1em;
-}
-
-.card-arrow {
-    color: #829477;
-    font-size: 16px;
 }
 
 .service-card h3 {
@@ -787,12 +771,12 @@ textarea {
     flex: 1;
     margin: 9px 0 18px;
     color: var(--muted);
-    font-size: 11px;
+    font-size: 13px;
     line-height: 1.75;
 }
 
 .service-card .text-link {
-    font-size: 10px;
+    font-size: 11px;
 }
 
 .section-footnote {
@@ -801,7 +785,7 @@ textarea {
     gap: 18px;
     margin-top: 22px;
     color: #778077;
-    font-size: 10px;
+    font-size: 11px;
 }
 
 .section-footnote > span:first-child {
@@ -815,7 +799,7 @@ textarea {
 
 .section-footnote a {
     color: var(--forest);
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 700;
 }
 
@@ -842,7 +826,7 @@ textarea {
     max-width: 430px;
     margin-top: 18px;
     color: rgba(255, 255, 255, .72);
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .text-link-light {
@@ -869,7 +853,7 @@ textarea {
 
 .approach-step > span:first-child {
     color: var(--lime);
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing: .1em;
 }
 
@@ -883,7 +867,7 @@ textarea {
 .approach-step p {
     margin-top: 4px;
     color: rgba(255, 255, 255, .68);
-    font-size: 11px;
+    font-size: 13px;
 }
 
 .programs-section {
@@ -915,7 +899,7 @@ textarea {
 .program-tag {
     padding: 17px 18px 0;
     color: #687968;
-    font-size: 9px;
+    font-size: 10px;
     font-weight: 700;
     letter-spacing: .12em;
 }
@@ -932,19 +916,22 @@ textarea {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform .7s cubic-bezier(.2, .7, .2, 1);
+}
+
+.program-card:hover .program-photo img,
+.program-card-grid .program-card:hover .program-card-image img,
+.team-card:hover > img {
+    transform: scale(1.035);
 }
 
 .program-info {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
     padding: 16px 18px 19px;
 }
 
 .program-info > div > span {
     color: #778077;
-    font-size: 8px;
+    font-size: 9px;
     letter-spacing: .1em;
 }
 
@@ -955,23 +942,6 @@ textarea {
     font-size: 15px;
     font-weight: 700;
     line-height: 1.4;
-}
-
-.round-arrow {
-    width: 34px;
-    height: 34px;
-    display: grid;
-    flex: 0 0 auto;
-    place-items: center;
-    border: 1px solid #cdd4c5;
-    border-radius: 50%;
-    color: var(--forest);
-    transition: background .2s ease, color .2s ease;
-}
-
-.program-card:hover .round-arrow {
-    background: var(--forest);
-    color: var(--white);
 }
 
 .program-more {
@@ -990,7 +960,7 @@ textarea {
     max-width: 570px;
     margin: 0;
     color: var(--muted);
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.75;
 }
 
@@ -1018,7 +988,7 @@ textarea {
 
 .community-detail p {
     color: #626e64;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.8;
 }
 
@@ -1056,6 +1026,7 @@ textarea {
     object-fit: cover;
     object-position: center top;
     background: #e9eee8;
+    transition: transform .7s cubic-bezier(.2, .7, .2, 1);
 }
 
 .team-info {
@@ -1064,7 +1035,7 @@ textarea {
 
 .team-role {
     color: #627957;
-    font-size: 9px;
+    font-size: 10px;
     font-weight: 700;
     letter-spacing: .13em;
     text-transform: uppercase;
@@ -1083,7 +1054,7 @@ textarea {
 .team-info > p:last-child {
     margin-top: 8px;
     color: var(--muted);
-    font-size: 10px;
+    font-size: 11px;
     line-height: 1.65;
 }
 
@@ -1108,7 +1079,7 @@ textarea {
     max-width: 390px;
     margin: 17px 0;
     color: var(--muted);
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.75;
 }
 
@@ -1150,7 +1121,7 @@ textarea {
     bottom: 12px;
     left: 13px;
     color: var(--white);
-    font-size: 9px;
+    font-size: 10px;
     font-weight: 700;
     letter-spacing: .08em;
     text-transform: uppercase;
@@ -1209,20 +1180,20 @@ textarea {
     max-width: 300px;
     margin-top: 16px;
     color: rgba(255, 255, 255, .65);
-    font-size: 11px;
+    font-size: 13px;
 }
 
 .footer-main h3 {
     margin-bottom: 14px;
     color: var(--white);
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 700;
 }
 
 .footer-links {
     display: grid;
     gap: 8px;
-    font-size: 11px;
+    font-size: 13px;
     line-height: 1.7;
 }
 
@@ -1238,7 +1209,7 @@ textarea {
     padding-bottom: 18px;
     border-top: 1px solid rgba(255, 255, 255, .15);
     color: rgba(255, 255, 255, .58);
-    font-size: 10px;
+    font-size: 11px;
 }
 
 .page-hero {
@@ -1315,7 +1286,7 @@ textarea {
 .page-heading > p {
     margin-bottom: 14px;
     color: var(--muted);
-    font-size: 13px;
+    font-size: 15px;
     line-height: 1.8;
 }
 
@@ -1366,13 +1337,13 @@ textarea {
 .service-card-secondary h4 {
     margin-top: 16px;
     color: var(--forest);
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .service-card-secondary p,
 .service-card-secondary li {
     color: var(--muted);
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.75;
 }
 
@@ -1415,7 +1386,7 @@ textarea {
 .program-detail p {
     margin-top: 5px;
     color: var(--muted);
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .program-card-grid {
@@ -1441,6 +1412,7 @@ textarea {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform .7s cubic-bezier(.2, .7, .2, 1);
 }
 
 .program-card-content {
@@ -1454,7 +1426,7 @@ textarea {
 .program-card-number {
     margin-bottom: 10px;
     color: #647b68;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 700;
     letter-spacing: .1em;
 }
@@ -1472,7 +1444,7 @@ textarea {
     flex: 1;
     margin: 0 0 18px;
     color: var(--muted);
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.75;
 }
 
@@ -1522,7 +1494,7 @@ textarea {
     bottom: 15px;
     left: 18px;
     color: var(--white);
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 700;
     letter-spacing: .08em;
     text-transform: uppercase;
@@ -1551,14 +1523,14 @@ textarea {
 
 .contact-item strong {
     color: var(--forest);
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .contact-item p,
 .contact-item a {
     display: block;
     color: var(--muted);
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .contact-item a:hover {
@@ -1571,7 +1543,7 @@ textarea {
     display: block;
     margin: 13px 0 5px;
     color: var(--ink);
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 700;
 }
 
@@ -1584,7 +1556,7 @@ textarea {
     border-radius: 4px;
     background: var(--paper);
     color: var(--ink);
-    font-size: 13px;
+    font-size: 15px;
     transition: border-color .2s ease, box-shadow .2s ease;
 }
 
@@ -1607,7 +1579,7 @@ textarea {
 .form-note {
     margin-top: 11px;
     color: var(--muted);
-    font-size: 10px;
+    font-size: 11px;
     line-height: 1.6;
 }
 
@@ -1637,7 +1609,7 @@ textarea {
     max-width: 510px;
     margin: 10px auto 0;
     color: var(--muted);
-    font-size: 13px;
+    font-size: 15px;
 }
 
 .blog-empty .button {
@@ -1663,24 +1635,33 @@ textarea {
         top: 100%;
         right: 0;
         left: 0;
-        display: none;
+        display: flex;
         align-items: stretch;
         gap: 0;
         padding: 8px 22px 18px;
         border-top: 1px solid var(--line);
         background: var(--paper);
         box-shadow: 0 14px 24px rgba(15, 40, 29, .1);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-8px);
+        transition: opacity .22s ease, transform .22s ease, visibility 0s linear .22s;
+        visibility: hidden;
     }
 
     .navigation.active {
-        display: flex;
         flex-direction: column;
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+        transition-delay: 0s;
+        visibility: visible;
     }
 
     .navigation a {
         padding: 12px 4px;
         border-bottom: 1px solid var(--line);
-        font-size: 13px;
+        font-size: 15px;
     }
 
     .navigation a:not(.nav-contact)::after {
@@ -1794,7 +1775,7 @@ textarea {
     }
 
     .topbar {
-        font-size: 9px;
+        font-size: 10px;
     }
 
     .topbar-inner {
@@ -1842,7 +1823,7 @@ textarea {
 
     .hero-bottom {
         padding-bottom: 14px;
-        font-size: 8px;
+        font-size: 9px;
     }
 
     .clients-section {
@@ -1931,7 +1912,7 @@ textarea {
     }
 
     .topbar a {
-        font-size: 8px;
+        font-size: 9px;
         white-space: nowrap;
     }
 
@@ -1969,7 +1950,7 @@ textarea {
 
     .trust-grid p {
         max-width: 150px;
-        font-size: 9px;
+        font-size: 10px;
     }
 
     .clients-intro h2 {
@@ -2080,7 +2061,7 @@ textarea {
         right: 8px;
         bottom: 8px;
         left: 8px;
-        font-size: 8px;
+        font-size: 9px;
     }
 
     .cta-section {
@@ -2141,7 +2122,7 @@ textarea {
         right: 13px;
         bottom: 12px;
         left: 13px;
-        font-size: 9px;
+        font-size: 10px;
     }
 
     .team-grid {
@@ -2161,7 +2142,7 @@ textarea {
     }
 
     .team-info > p:last-child {
-        font-size: 9px;
+        font-size: 10px;
     }
 
     .contact-details,
@@ -2203,6 +2184,34 @@ textarea {
     .client-carousel-toggle {
         display: none;
     }
+
+    .reveal-on-scroll {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
+
+.motion-enabled .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity .65s ease, transform .65s cubic-bezier(.2, .7, .2, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+}
+
+.motion-enabled .reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.motion-enabled .service-card.is-visible:hover,
+.motion-enabled .editorial-card.is-visible:hover {
+    transform: translateY(-3px);
+}
+
+.motion-enabled .program-card.is-visible:hover {
+    transform: translateY(-4px);
 }
 
 .editorial-hero h1 {
@@ -2228,7 +2237,7 @@ textarea {
     border-radius: 5px;
     background: #f0f2e9;
     color: #566256;
-    font-size: 11px;
+    font-size: 13px;
     line-height: 1.65;
 }
 
@@ -2288,7 +2297,7 @@ textarea {
     border-radius: 3px;
     background: #f2f5ed;
     color: #526d49;
-    font-size: 9px;
+    font-size: 10px;
     font-weight: 700;
     letter-spacing: .07em;
     text-transform: uppercase;
@@ -2297,7 +2306,7 @@ textarea {
 .article-kicker {
     margin-top: 13px;
     color: #758075;
-    font-size: 9px;
+    font-size: 10px;
     font-weight: 600;
     letter-spacing: .09em;
     text-transform: uppercase;
@@ -2316,7 +2325,7 @@ textarea {
 .featured-article-content > p:not(.article-kicker) {
     margin-top: 13px;
     color: var(--muted);
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.8;
 }
 
@@ -2388,7 +2397,7 @@ textarea {
 .editorial-card-content > p:not(.article-kicker) {
     margin-top: 10px;
     color: var(--muted);
-    font-size: 11px;
+    font-size: 13px;
     line-height: 1.75;
 }
 
@@ -2411,7 +2420,7 @@ textarea {
     display: inline-flex;
     margin-bottom: 25px;
     color: rgba(255, 255, 255, .84);
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 600;
 }
 
@@ -2451,7 +2460,7 @@ textarea {
     border: 1px solid rgba(255, 255, 255, .23);
     border-radius: 3px;
     color: rgba(255, 255, 255, .82);
-    font-size: 9px;
+    font-size: 10px;
     font-weight: 700;
     letter-spacing: .08em;
     text-transform: uppercase;
@@ -2512,7 +2521,7 @@ textarea {
     border-left: 3px solid #8aa476;
     background: #f0f2e9;
     color: #586358;
-    font-size: 11px;
+    font-size: 13px;
     line-height: 1.75;
 }
 
@@ -2594,7 +2603,7 @@ textarea {
     }
 
     .article-summary {
-        font-size: 13px;
+        font-size: 15px;
     }
 
     .article-cover {
@@ -2607,7 +2616,7 @@ textarea {
     }
 
     .article-body p {
-        font-size: 13px;
+        font-size: 15px;
     }
 
     .article-body h2 {
