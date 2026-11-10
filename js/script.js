@@ -49,16 +49,50 @@ if (menuToggle && navigation) {
 }
 
 const clientCarousel = document.querySelector(".client-carousel");
-const clientCarouselToggle = document.querySelector(".client-carousel-toggle");
+const clientLists = clientCarousel?.querySelectorAll(".client-list");
 
-if (clientCarousel && clientCarouselToggle) {
-    clientCarouselToggle.addEventListener("click", function () {
-        const isPaused = clientCarousel.classList.toggle("is-paused");
+if (clientCarousel && clientLists?.length === 2) {
+    const [firstList, secondList] = clientLists;
+    const originalItems = Array.from(firstList.children).map(function (item) {
+        return item.cloneNode(true);
+    });
 
-        clientCarouselToggle.setAttribute("aria-pressed", String(isPaused));
-        clientCarouselToggle.textContent = isPaused
-            ? "Lanjutkan carousel"
-            : "Jeda carousel";
+    function fillClientCarousel() {
+        if (!originalItems.length || !clientCarousel.clientWidth) return;
+
+        firstList.replaceChildren(...originalItems.map(function (item) {
+            return item.cloneNode(true);
+        }));
+
+        const itemWidth = firstList.firstElementChild?.getBoundingClientRect().width || 188;
+        const gap = parseFloat(getComputedStyle(firstList).columnGap) || 20;
+        const targetWidth = clientCarousel.clientWidth + itemWidth + gap;
+        let index = 0;
+
+        while (firstList.getBoundingClientRect().width < targetWidth) {
+            firstList.appendChild(originalItems[index % originalItems.length].cloneNode(true));
+            index += 1;
+        }
+
+        secondList.replaceChildren(...Array.from(firstList.children).map(function (item) {
+            const duplicate = item.cloneNode(true);
+            duplicate.querySelectorAll("img").forEach(function (image) {
+                image.alt = "";
+                image.loading = "eager";
+            });
+            return duplicate;
+        }));
+
+        const groupWidth = firstList.getBoundingClientRect().width;
+        clientCarousel.querySelector(".client-track").style.animationDuration =
+            Math.max(28, groupWidth / 22) + "s";
+    }
+
+    fillClientCarousel();
+    let carouselResizeTimer;
+    window.addEventListener("resize", function () {
+        window.clearTimeout(carouselResizeTimer);
+        carouselResizeTimer = window.setTimeout(fillClientCarousel, 120);
     });
 }
 
@@ -71,7 +105,8 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
 if ("IntersectionObserver" in window && !prefersReducedMotion) {
     const revealTargets = document.querySelectorAll(
         "main > section, .featured-article, .service-card, .service-card-secondary, " +
-        ".program-card, .team-card, .gallery-item, .editorial-card, .approach-step"
+        ".program-card, .team-card, .gallery-item, .editorial-card, .approach-step, " +
+        ".hero-copy, .hero-photo, .page-hero > .container, .article-hero-content"
     );
 
     document.body.classList.add("motion-enabled");
