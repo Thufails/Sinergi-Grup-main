@@ -100,6 +100,52 @@ document.querySelectorAll(".currentYear").forEach(function (element) {
     element.textContent = new Date().getFullYear();
 });
 
+const articleGrid = document.getElementById("articleGrid");
+
+if (articleGrid) {
+    const articleCards = Array.from(articleGrid.querySelectorAll(".editorial-card"));
+    const articleSearch = document.getElementById("articleSearch");
+    const articleFilters = document.querySelectorAll("[data-article-filter]");
+    const articleResults = document.getElementById("articleResults");
+    const articleEmpty = document.getElementById("articleEmpty");
+    let selectedCategory = "*";
+
+    function normalizeArticleText(value) {
+        return value.toLocaleLowerCase("id-ID").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }
+
+    function updateArticleList() {
+        const query = normalizeArticleText(articleSearch.value.trim());
+        let visibleCount = 0;
+
+        articleCards.forEach(function (card) {
+            const matchesCategory = selectedCategory === "*" || card.dataset.category === selectedCategory;
+            const matchesQuery = normalizeArticleText(card.textContent).includes(query);
+            const isVisible = matchesCategory && matchesQuery;
+            card.hidden = !isVisible;
+            if (isVisible) visibleCount += 1;
+        });
+
+        articleResults.textContent = "Ditemukan " + visibleCount + " artikel.";
+        articleEmpty.hidden = visibleCount !== 0;
+    }
+
+    articleFilters.forEach(function (button) {
+        button.addEventListener("click", function () {
+            selectedCategory = button.dataset.articleFilter;
+            articleFilters.forEach(function (filterButton) {
+                const isActive = filterButton === button;
+                filterButton.classList.toggle("is-active", isActive);
+                filterButton.setAttribute("aria-pressed", String(isActive));
+            });
+            updateArticleList();
+        });
+    });
+
+    articleSearch.addEventListener("input", updateArticleList);
+    updateArticleList();
+}
+
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 if ("IntersectionObserver" in window && !prefersReducedMotion) {

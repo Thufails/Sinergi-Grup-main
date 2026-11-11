@@ -56,7 +56,16 @@
                         <p class="eyebrow">Jelajahi topik</p>
                         <h2 id="article-list-title">Bacaan untuk persoalan kerja sehari-hari.</h2>
                     </div>
-                    <div class="editorial-grid">{{ARTICLE_CARDS}}</div>
+                    <div class="editorial-tools" role="search" aria-label="Cari artikel">
+                        <label class="visually-hidden" for="articleSearch">Cari artikel</label>
+                        <input id="articleSearch" class="article-search" type="search" placeholder="Cari topik atau kata kunci..." autocomplete="off">
+                        <div class="article-filters" role="group" aria-label="Filter kategori artikel">
+                            {{ARTICLE_FILTERS}}
+                        </div>
+                    </div>
+                    <p class="article-results" id="articleResults" role="status" aria-live="polite"></p>
+                    <div class="editorial-grid" id="articleGrid">{{ARTICLE_CARDS}}</div>
+                    <p class="article-empty" id="articleEmpty" hidden>Tidak ada artikel yang cocok. Coba kata kunci atau topik lain.</p>
                 </section>
             </div>
         </section>

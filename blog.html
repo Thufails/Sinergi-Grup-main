@@ -68,8 +68,21 @@
                         <p class="eyebrow">Jelajahi topik</p>
                         <h2 id="article-list-title">Bacaan untuk persoalan kerja sehari-hari.</h2>
                     </div>
-                    <div class="editorial-grid">
-        <article class="editorial-card editorial-card--pengembangan-tim">
+                    <div class="editorial-tools" role="search" aria-label="Cari artikel">
+                        <label class="visually-hidden" for="articleSearch">Cari artikel</label>
+                        <input id="articleSearch" class="article-search" type="search" placeholder="Cari topik atau kata kunci..." autocomplete="off">
+                        <div class="article-filters" role="group" aria-label="Filter kategori artikel">
+                            <button type="button" class="article-filter is-active" data-article-filter="*" aria-pressed="true">Semua topik</button>
+<button type="button" class="article-filter" data-article-filter="pengembangan sdm" aria-pressed="false">Pengembangan SDM</button>
+<button type="button" class="article-filter" data-article-filter="coaching" aria-pressed="false">Coaching</button>
+<button type="button" class="article-filter" data-article-filter="budaya kerja" aria-pressed="false">Budaya Kerja</button>
+<button type="button" class="article-filter" data-article-filter="kewirausahaan" aria-pressed="false">Kewirausahaan</button>
+<button type="button" class="article-filter" data-article-filter="strategi bisnis" aria-pressed="false">Strategi Bisnis</button>
+                        </div>
+                    </div>
+                    <p class="article-results" id="articleResults" role="status" aria-live="polite"></p>
+                    <div class="editorial-grid" id="articleGrid">
+        <article class="editorial-card editorial-card--pengembangan-tim" data-category="pengembangan sdm">
             <a class="editorial-card-image" href="artikel/pengembangan-tim.html" tabindex="-1" aria-hidden="true">
                 <img src="images/hero-community-hd.jpg" alt="" loading="lazy" decoding="async">
             </a>
@@ -81,7 +94,7 @@
             </div>
         </article>
 
-        <article class="editorial-card editorial-card--coaching">
+        <article class="editorial-card editorial-card--coaching" data-category="coaching">
             <a class="editorial-card-image" href="artikel/coaching.html" tabindex="-1" aria-hidden="true">
                 <img src="images/article-coaching-hd.jpg" alt="" loading="lazy" decoding="async">
             </a>
@@ -93,7 +106,7 @@
             </div>
         </article>
 
-        <article class="editorial-card editorial-card--budaya-kerja">
+        <article class="editorial-card editorial-card--budaya-kerja" data-category="budaya kerja">
             <a class="editorial-card-image" href="artikel/budaya-kerja.html" tabindex="-1" aria-hidden="true">
                 <img src="images/article-culture-hd.jpg" alt="" loading="lazy" decoding="async">
             </a>
@@ -105,7 +118,7 @@
             </div>
         </article>
 
-        <article class="editorial-card editorial-card--tantangan-pengusaha">
+        <article class="editorial-card editorial-card--tantangan-pengusaha" data-category="kewirausahaan">
             <a class="editorial-card-image" href="artikel/tantangan-pengusaha.html" tabindex="-1" aria-hidden="true">
                 <img src="images/article-entrepreneur-hd.jpg" alt="" loading="lazy" decoding="async">
             </a>
@@ -117,7 +130,7 @@
             </div>
         </article>
 
-        <article class="editorial-card editorial-card--perencanaan-strategis">
+        <article class="editorial-card editorial-card--perencanaan-strategis" data-category="strategi bisnis">
             <a class="editorial-card-image" href="artikel/perencanaan-strategis.html" tabindex="-1" aria-hidden="true">
                 <img src="images/hero-pln-hd.jpg" alt="" loading="lazy" decoding="async">
             </a>
@@ -128,6 +141,7 @@
                 <a href="artikel/perencanaan-strategis.html" class="text-link">Baca artikel</a>
             </div>
         </article></div>
+                    <p class="article-empty" id="articleEmpty" hidden>Tidak ada artikel yang cocok. Coba kata kunci atau topik lain.</p>
                 </section>
             </div>
         </section>

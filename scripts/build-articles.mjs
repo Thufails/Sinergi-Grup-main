@@ -134,7 +134,7 @@ function renderArticleCard(article) {
     const image = escapeHtml(article.image);
 
     return `
-        <article class="editorial-card editorial-card--${article.slug}">
+        <article class="editorial-card editorial-card--${article.slug}" data-category="${escapeHtml(article.category.toLocaleLowerCase("id-ID"))}">
             <a class="editorial-card-image" href="${href}" tabindex="-1" aria-hidden="true">
                 <img src="${image}" alt="" loading="lazy" decoding="async">
             </a>
@@ -145,6 +145,20 @@ function renderArticleCard(article) {
                 <a href="${href}" class="text-link">Baca artikel</a>
             </div>
         </article>`;
+}
+
+function renderArticleFilters() {
+    const categories = [...new Set(articles
+        .filter(function (article) { return !article.featured; })
+        .map(function (article) { return article.category; }))];
+
+    return [
+        `<button type="button" class="article-filter is-active" data-article-filter="*" aria-pressed="true">Semua topik</button>`,
+        ...categories.map(function (category) {
+            const normalizedCategory = category.toLocaleLowerCase("id-ID");
+            return `<button type="button" class="article-filter" data-article-filter="${escapeHtml(normalizedCategory)}" aria-pressed="false">${escapeHtml(category)}</button>`;
+        }),
+    ].join("\n");
 }
 
 function renderFeaturedArticle(article) {
@@ -249,6 +263,7 @@ async function build() {
         .join("\n");
     const renderedBlog = renderTemplate(blogTemplate, {
         ARTICLE_CARDS: articleCards,
+        ARTICLE_FILTERS: renderArticleFilters(),
         FEATURED_ARTICLE: renderFeaturedArticle(featuredArticle),
     }, "blog.html");
 
