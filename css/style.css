@@ -2161,6 +2161,90 @@ textarea {
     }
 }
 
+.article-toc {
+    margin: 28px 0 34px;
+    padding: 20px 22px;
+    border-left: 3px solid var(--orange);
+    border-radius: 0 14px 14px 0;
+    background: var(--cream-alt);
+}
+
+.article-toc-title {
+    margin: 0 !important;
+    color: var(--navy-deep) !important;
+    font-size: 14px !important;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+
+.article-toc ol {
+    display: grid;
+    gap: 8px;
+    margin: 13px 0 0;
+    padding-left: 20px;
+    color: var(--orange-dark);
+}
+
+.article-toc a {
+    color: var(--navy);
+    font-size: 16px;
+    line-height: 1.55;
+    text-decoration: none;
+    text-underline-offset: 4px;
+}
+
+.article-toc a:hover,
+.article-toc a:focus-visible {
+    color: var(--orange-dark);
+    text-decoration: underline;
+}
+
+.article-body h2[id] {
+    scroll-margin-top: 115px;
+}
+
+@media (max-width: 600px) {
+    .article-toc {
+        padding: 17px 18px;
+    }
+
+    .article-toc a {
+        font-size: 15px;
+    }
+}
+
+.article-related {
+    margin-top: clamp(64px, 7vw, 92px);
+    padding-top: clamp(38px, 5vw, 56px);
+}
+
+.article-related-heading {
+    max-width: 700px;
+    margin-bottom: 28px;
+}
+
+.article-related-heading h2 {
+    font-size: clamp(30px, 3.6vw, 42px);
+}
+
+.article-related .editorial-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(18px, 2.6vw, 32px);
+}
+
+@media (max-width: 960px) {
+    .article-related .editorial-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .article-related .editorial-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (max-width: 380px) {
     .topbar-inner > span {
         max-width: 62%;
@@ -2505,6 +2589,20 @@ textarea {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.article-cover--tantangan-pengusaha img {
+    object-position: center 78%;
+}
+
+.editorial-card--tantangan-pengusaha .editorial-card-image img {
+    object-position: center 86%;
+}
+
+@media (max-width: 760px) {
+    .article-cover--tantangan-pengusaha img {
+        object-position: center bottom;
+    }
 }
 
 .article-body {

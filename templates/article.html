@@ -26,20 +26,18 @@
 <main>
     <section class="article-hero">
         <div class="container article-hero-content">
-            <a class="article-back" href="../blog.html">Kembali ke artikel</a>
             <span class="article-category">{{CATEGORY}}</span>
             <h1>{{TITLE}}</h1>
             <p class="article-summary">{{SUMMARY}}</p>
-            <span class="draft-label">Draf editorial untuk ditinjau</span>
         </div>
     </section>
     <article class="article-detail container">
-        <figure class="article-cover"><img src="../{{IMAGE}}" alt="{{IMAGE_ALT}}" fetchpriority="high" decoding="async"></figure>
+        <figure class="article-cover article-cover--{{SLUG}}"><img src="../{{IMAGE}}" alt="{{IMAGE_ALT}}" fetchpriority="high" decoding="async"></figure>
         <div class="article-body">
             {{CONTENT}}
-            <aside class="article-review-note"><strong>Catatan penyuntingan:</strong> Naskah ini merupakan draf editorial umum. Tinjau isi, gaya bahasa, dan kesesuaiannya dengan perspektif perusahaan sebelum dipublikasikan.</aside>
             <a class="text-link article-return" href="../blog.html">Kembali ke daftar artikel</a>
         </div>
+        {{RELATED_ARTICLES}}
     </article>
 </main>
 <footer class="site-footer">

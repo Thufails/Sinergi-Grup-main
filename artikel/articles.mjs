@@ -6,10 +6,11 @@ export const articles = [
         title: "Apa Peran Pemimpin saat Bisnis Berkembang?",
         category: "Kepemimpinan",
         summary: "Saat usaha tumbuh, pemimpin perlu menjaga prioritas tetap jelas dan membantu tim mengambil keputusan dengan lebih mandiri.",
-        description: "Draf editorial tentang peran leadership dalam menyatukan arah, keputusan, dan perkembangan bisnis.",
-        image: "images/26001339_139635606754667_6998839997686775049_n-nzmgis0r1axng885k565aeiclilh2de6p8aydt8jky.jpg",
+        description: "Peran pemimpin saat bisnis tumbuh, mulai dari menjaga prioritas, membuat keputusan, hingga mengembangkan kemampuan tim.",
+        image: "images/article-leadership-hd.jpg",
         imageAlt: "Narasumber menyampaikan materi dalam kegiatan pembelajaran bisnis",
         featured: true,
+        topics: ["kepemimpinan", "pengembangan-tim", "strategi-bisnis"],
         content: String.raw`
             <p class="article-intro">Ketika pelanggan, tim, dan tanggung jawab bertambah, cara pemilik mengelola usaha perlu ikut berubah. Kejelasan prioritas dan wewenang membantu tim tetap bergerak tanpa menunggu semua keputusan dari satu orang.</p>
             <h2>Menyatukan arah dan prioritas</h2>
@@ -29,10 +30,11 @@ export const articles = [
         title: "Strategi Mengembangkan Tim yang Produktif",
         category: "Pengembangan SDM",
         summary: "Produktivitas tim tumbuh dari sasaran yang jelas, peran yang dipahami, komunikasi terbuka, dan kesempatan belajar yang konsisten.",
-        description: "Draf editorial dengan langkah dasar membangun tim yang produktif melalui tujuan, peran, komunikasi, dan pembelajaran.",
-        image: "images/scom-3-6nts5cdqcndttj9vhd6bq5h235sbng3xv85bt59utck.png",
+        description: "Langkah membangun tim produktif melalui sasaran yang jelas, pembagian peran, komunikasi, dan pembelajaran.",
+        image: "images/hero-community-hd.jpg",
         imageAlt: "Anggota komunitas berkumpul dalam kegiatan bersama",
         featured: false,
+        topics: ["pengembangan-tim", "kepemimpinan", "komunikasi", "kinerja"],
         content: String.raw`
             <p class="article-intro">Tim yang produktif bukan berarti terus-menerus sibuk. Produktivitas terlihat ketika tenaga dan waktu digunakan untuk hasil yang penting, pekerjaan dapat diselesaikan dengan mutu yang disepakati, dan anggota tim mampu berkolaborasi.</p>
             <h2>Mulai dengan sasaran dan ukuran hasil</h2>
@@ -52,10 +54,11 @@ export const articles = [
         title: "Peran Coaching dalam Pengembangan Potensi Karyawan",
         category: "Coaching",
         summary: "Percakapan coaching yang terarah dapat membantu karyawan merefleksikan kekuatan, menetapkan tujuan, dan menyusun langkah pengembangan.",
-        description: "Draf editorial tentang bagaimana coaching dapat mendukung refleksi, tujuan belajar, dan pengembangan potensi karyawan.",
-        image: "images/OYC.JPG",
+        description: "Bagaimana percakapan coaching membantu karyawan mengenali kekuatan, menetapkan tujuan, dan menyusun langkah pengembangan.",
+        image: "images/article-coaching-hd.jpg",
         imageAlt: "Peserta menyimak materi dalam kegiatan pembelajaran",
         featured: false,
+        topics: ["coaching", "pengembangan-karyawan", "pengembangan-tim", "kinerja"],
         content: String.raw`
             <p class="article-intro">Pengembangan karyawan tidak hanya berlangsung melalui pelatihan formal. Percakapan yang teratur antara karyawan dan atasan juga dapat membantu seseorang memahami tantangan, melihat pilihan, dan mengambil tanggung jawab atas proses belajarnya.</p>
             <h2>Coaching membantu membangun kesadaran</h2>
@@ -74,10 +77,11 @@ export const articles = [
         title: "Cara Membangun Budaya Kerja yang Positif",
         category: "Budaya Kerja",
         summary: "Budaya kerja terlihat dalam kebiasaan sehari-hari. Mulailah dengan nilai yang dipahami bersama, teladan pemimpin, dan komunikasi yang saling menghargai.",
-        description: "Draf editorial tentang langkah praktis membangun budaya kerja yang positif melalui nilai, teladan, dan komunikasi.",
-        image: "images/IH-2.jpg",
+        description: "Cara membangun budaya kerja positif melalui nilai yang jelas, keteladanan pemimpin, dan komunikasi yang saling menghargai.",
+        image: "images/article-culture-hd.jpg",
         imageAlt: "Peserta mengikuti sesi pembelajaran bersama",
         featured: false,
+        topics: ["budaya-kerja", "kepemimpinan", "komunikasi", "pengembangan-tim"],
         content: String.raw`
             <p class="article-intro">Budaya kerja bukan hanya pernyataan nilai yang dipajang di dinding. Budaya tercermin dari cara orang berkomunikasi, membuat keputusan, menghadapi kesalahan, dan bekerja sama setiap hari. Karena itu, perubahan budaya perlu tampak dalam kebiasaan yang nyata.</p>
             <h2>Terjemahkan nilai menjadi perilaku</h2>
@@ -96,10 +100,11 @@ export const articles = [
         title: "Tantangan Pengusaha dalam Mengembangkan Bisnis",
         category: "Kewirausahaan",
         summary: "Menumbuhkan usaha menuntut pengusaha menata prioritas, memahami pelanggan, memperkuat proses, dan mengambil keputusan di tengah perubahan.",
-        description: "Draf editorial tentang tantangan umum pengusaha saat menumbuhkan usaha dan cara menata langkah pengembangan.",
-        image: "images/nlgs.png",
+        description: "Tantangan yang dihadapi pengusaha saat menumbuhkan bisnis, dari menetapkan prioritas hingga mengelola sumber daya.",
+        image: "images/article-entrepreneur-hd.jpg",
         imageAlt: "Suasana kegiatan usaha dan pembelajaran kewirausahaan",
         featured: false,
+        topics: ["kewirausahaan", "strategi-bisnis", "operasional", "kepemimpinan"],
         content: String.raw`
             <p class="article-intro">Mengembangkan bisnis berarti menghadapi serangkaian pilihan yang saling berkaitan. Pengusaha perlu melayani pelanggan, mengelola arus kerja, menjaga mutu, dan mempertimbangkan peluang baru. Tantangannya berbeda untuk setiap usaha, sehingga langkah pertama adalah memahami keadaan bisnis sendiri.</p>
             <h2>Menentukan prioritas di tengah banyak kebutuhan</h2>
@@ -118,10 +123,11 @@ export const articles = [
         title: "Pentingnya Perencanaan Strategis bagi Perusahaan",
         category: "Strategi Bisnis",
         summary: "Perencanaan strategis menerjemahkan tujuan jangka panjang menjadi pilihan, prioritas, dan tindakan yang dapat dievaluasi bersama.",
-        description: "Draf editorial tentang perencanaan strategis untuk menyelaraskan tujuan, pilihan, prioritas, dan evaluasi perusahaan.",
-        image: "images/IH-B-PLN.jpg",
+        description: "Perencanaan strategis membantu perusahaan menyelaraskan tujuan, prioritas, pelaksanaan, dan evaluasi.",
+        image: "images/hero-pln-hd.jpg",
         imageAlt: "Peserta dalam sesi pembelajaran dan diskusi bersama",
         featured: false,
+        topics: ["strategi-bisnis", "perencanaan", "manajemen", "kewirausahaan"],
         content: String.raw`
             <p class="article-intro">Perusahaan sering memiliki banyak gagasan tentang masa depan. Perencanaan strategis membantu menghubungkan gagasan tersebut dengan pilihan yang akan dijalankan, sumber daya yang dibutuhkan, dan cara organisasi menilai kemajuan.</p>
             <h2>Memahami kondisi sebelum menentukan arah</h2>
