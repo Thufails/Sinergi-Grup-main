@@ -1,4 +1,4 @@
-import { access, readFile, writeFile } from "node:fs/promises";
+import { access, readFile, unlink, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { articles } from "../artikel/articles.mjs";
@@ -102,6 +102,13 @@ function validateArticles(items) {
         }
         slugs.add(article.slug);
 
+        if (!(article.status === "draft" || article.status === "published")) {
+            throw new Error(`Article ${article.slug} must have status "draft" or "published".`);
+        }
+        if (article.featured && article.status !== "published") {
+            throw new Error(`Draft article ${article.slug} cannot be featured.`);
+        }
+
         for (const key of ["title", "category", "summary", "description", "image", "imageAlt", "content"]) {
             if (typeof article[key] !== "string" || !article[key].trim()) {
                 throw new Error(`Article ${article.slug} is missing ${key}.`);
@@ -118,7 +125,7 @@ function validateArticles(items) {
             throw new Error(`Article ${article.slug} has an unsafe image path.`);
         }
 
-        if (article.featured) featuredCount += 1;
+        if (article.featured && article.status === "published") featuredCount += 1;
     }
 
     if (featuredCount !== 1) {
@@ -149,7 +156,7 @@ function renderArticleCard(article) {
 
 function renderArticleFilters() {
     const categories = [...new Set(articles
-        .filter(function (article) { return !article.featured; })
+        .filter(function (article) { return article.status === "published" && !article.featured; })
         .map(function (article) { return article.category; }))];
 
     return [
@@ -184,16 +191,17 @@ function renderRelatedArticles(currentArticle) {
     const currentTopics = new Set(currentArticle.topics);
     const related = articles
         .filter(function (article) {
-            return article.slug !== currentArticle.slug;
+            return article.status === "published" && article.slug !== currentArticle.slug;
         })
         .map(function (article, index) {
             const score = article.topics.reduce(function (total, topic) {
                 return total + (currentTopics.has(topic) ? 1 : 0);
             }, 0);
-            return { article, index, score };
+            const sameCategory = article.category === currentArticle.category;
+            return { article, index, sameCategory, score };
         })
         .sort(function (left, right) {
-            return right.score - left.score || left.index - right.index;
+            return Number(right.sameCategory) - Number(left.sameCategory) || right.score - left.score || left.index - right.index;
         })
         .slice(0, 3);
 
@@ -225,6 +233,9 @@ function renderRelatedArticles(currentArticle) {
 
 async function build() {
     validateArticles(articles);
+    const publishedArticles = articles.filter(function (article) {
+        return article.status === "published";
+    });
 
     for (const article of articles) {
         const imagePath = path.join(projectRoot, article.image);
@@ -237,6 +248,15 @@ async function build() {
     ]);
 
     for (const article of articles) {
+        const articlePath = path.join(projectRoot, "artikel", `${article.slug}.html`);
+
+        if (article.status !== "published") {
+            await unlink(articlePath).catch(function (error) {
+                if (error.code !== "ENOENT") throw error;
+            });
+            continue;
+        }
+
         const rendered = renderTemplate(articleTemplate, {
             CATEGORY: escapeHtml(article.category),
             CONTENT: addTableOfContents(article.content),
@@ -249,13 +269,13 @@ async function build() {
             RELATED_ARTICLES: renderRelatedArticles(article),
         }, "article.html");
 
-        await writeFile(path.join(projectRoot, "artikel", `${article.slug}.html`), rendered.trimStart(), "utf8");
+        await writeFile(articlePath, rendered.trimStart(), "utf8");
     }
 
-    const featuredArticle = articles.find(function (article) {
+    const featuredArticle = publishedArticles.find(function (article) {
         return article.featured;
     });
-    const articleCards = articles
+    const articleCards = publishedArticles
         .filter(function (article) {
             return !article.featured;
         })
@@ -268,7 +288,7 @@ async function build() {
     }, "blog.html");
 
     await writeFile(path.join(projectRoot, "blog.html"), renderedBlog, "utf8");
-    console.log(`Built ${articles.length} article pages and the article listing.`);
+    console.log(`Built ${publishedArticles.length} published article pages (${articles.length - publishedArticles.length} drafts excluded) and the article listing.`);
 }
 
 build().catch(function (error) {

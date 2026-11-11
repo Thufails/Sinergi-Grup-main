@@ -9,6 +9,7 @@ export const articles = [
         description: "Peran pemimpin saat bisnis tumbuh, mulai dari menjaga prioritas, membuat keputusan, hingga mengembangkan kemampuan tim.",
         image: "images/article-leadership-hd.jpg",
         imageAlt: "Narasumber menyampaikan materi dalam kegiatan pembelajaran bisnis",
+        status: "published",
         featured: true,
         topics: ["kepemimpinan", "pengembangan-tim", "strategi-bisnis"],
         content: String.raw`
@@ -33,6 +34,7 @@ export const articles = [
         description: "Langkah membangun tim produktif melalui sasaran yang jelas, pembagian peran, komunikasi, dan pembelajaran.",
         image: "images/hero-community-hd.jpg",
         imageAlt: "Anggota komunitas berkumpul dalam kegiatan bersama",
+        status: "published",
         featured: false,
         topics: ["pengembangan-tim", "kepemimpinan", "komunikasi", "kinerja"],
         content: String.raw`
@@ -57,6 +59,7 @@ export const articles = [
         description: "Bagaimana percakapan coaching membantu karyawan mengenali kekuatan, menetapkan tujuan, dan menyusun langkah pengembangan.",
         image: "images/article-coaching-hd.jpg",
         imageAlt: "Peserta menyimak materi dalam kegiatan pembelajaran",
+        status: "published",
         featured: false,
         topics: ["coaching", "pengembangan-karyawan", "pengembangan-tim", "kinerja"],
         content: String.raw`
@@ -80,6 +83,7 @@ export const articles = [
         description: "Cara membangun budaya kerja positif melalui nilai yang jelas, keteladanan pemimpin, dan komunikasi yang saling menghargai.",
         image: "images/article-culture-hd.jpg",
         imageAlt: "Peserta mengikuti sesi pembelajaran bersama",
+        status: "published",
         featured: false,
         topics: ["budaya-kerja", "kepemimpinan", "komunikasi", "pengembangan-tim"],
         content: String.raw`
@@ -103,6 +107,7 @@ export const articles = [
         description: "Tantangan yang dihadapi pengusaha saat menumbuhkan bisnis, dari menetapkan prioritas hingga mengelola sumber daya.",
         image: "images/article-entrepreneur-hd.jpg",
         imageAlt: "Suasana kegiatan usaha dan pembelajaran kewirausahaan",
+        status: "published",
         featured: false,
         topics: ["kewirausahaan", "strategi-bisnis", "operasional", "kepemimpinan"],
         content: String.raw`
@@ -126,6 +131,7 @@ export const articles = [
         description: "Perencanaan strategis membantu perusahaan menyelaraskan tujuan, prioritas, pelaksanaan, dan evaluasi.",
         image: "images/hero-pln-hd.jpg",
         imageAlt: "Peserta dalam sesi pembelajaran dan diskusi bersama",
+        status: "published",
         featured: false,
         topics: ["strategi-bisnis", "perencanaan", "manajemen", "kewirausahaan"],
         content: String.raw`
