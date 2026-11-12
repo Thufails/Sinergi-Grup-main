@@ -4,6 +4,7 @@
     const form = document.getElementById("loginForm");
     const emailInput = document.getElementById("loginEmail");
     const passwordInput = document.getElementById("loginPassword");
+    const togglePassword = document.getElementById("togglePassword");
     const message = document.getElementById("loginMessage");
     const button = document.getElementById("loginButton");
 
@@ -11,6 +12,15 @@
         message.textContent = text;
         message.className = "login-message" + (type ? " is-" + type : "");
     }
+
+    togglePassword.addEventListener("click", function () {
+        const isVisible = passwordInput.type === "text";
+        passwordInput.type = isVisible ? "password" : "text";
+        togglePassword.setAttribute("aria-pressed", String(!isVisible));
+        const label = isVisible ? "Tampilkan kata sandi" : "Sembunyikan kata sandi";
+        togglePassword.setAttribute("aria-label", label);
+        togglePassword.setAttribute("title", label);
+    });
 
     function getSafeDestination() {
         const candidate = new URLSearchParams(window.location.search).get("next") || "/admin/";

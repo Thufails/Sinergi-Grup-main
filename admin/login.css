@@ -67,6 +67,31 @@ body {
     font: inherit;
 }
 
+.password-field { position: relative; }
+.password-field input { padding-right: 54px; }
+.login-card .password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    display: grid;
+    width: 38px;
+    min-height: 38px;
+    margin: 0;
+    padding: 8px;
+    transform: translateY(-50%);
+    border: 0;
+    border-radius: 8px;
+    color: #596b7f;
+    background: transparent;
+    cursor: pointer;
+}
+.login-card .password-toggle:hover { color: #0b2b4d; background: #f4f1eb; }
+.login-card .password-toggle:focus-visible { outline: 2px solid #d88a22; outline-offset: 1px; }
+.eye-icon { display: block; width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.8; }
+.eye-closed { display: none; }
+.password-toggle[aria-pressed="true"] .eye-open { display: none; }
+.password-toggle[aria-pressed="true"] .eye-closed { display: block; }
+
 .login-card input:focus { border-color: #d88a22; box-shadow: 0 0 0 3px rgba(243, 148, 34, .16); }
 .login-card button {
     min-height: 49px;
