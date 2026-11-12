@@ -30,7 +30,7 @@ async function importSessionKey(secret, usages) {
 export function isLoginConfigured(env) {
     return Boolean(
         env.ADMIN_EMAIL &&
-        env.ADMIN_PASSWORD && env.ADMIN_PASSWORD.length >= 16 &&
+        env.ADMIN_PASSWORD && env.ADMIN_PASSWORD.length >= 8 &&
         env.ADMIN_SESSION_SECRET && env.ADMIN_SESSION_SECRET.length >= 32
     );
 }

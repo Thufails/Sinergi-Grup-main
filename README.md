@@ -136,7 +136,7 @@ Di dashboard Cloudflare, buka **Workers & Pages → sinergi-grup-main → Settin
 | Nama | Jenis | Nilai |
 |---|---|---|
 | `ADMIN_EMAIL` | Variable | Email admin yang dipilih pemilik |
-| `ADMIN_PASSWORD` | Secret terenkripsi | Kata sandi unik, minimal 16 karakter |
+| `ADMIN_PASSWORD` | Secret terenkripsi | Kata sandi unik, minimal 8 karakter |
 | `ADMIN_SESSION_SECRET` | Secret terenkripsi | Nilai acak minimal 32 karakter untuk menandatangani sesi |
 
 Atur variabel untuk **Production** (dan Preview bila diperlukan). Simpan password dan secret langsung di dashboard Cloudflare; jangan masukkan ke GitHub atau kirim lewat chat. Setelah konfigurasi tersedia, jalankan deployment baru agar login dapat digunakan. Jika deployment dibuat sebelum pengaturan ini, halaman login akan menampilkan bahwa login belum disiapkan.
