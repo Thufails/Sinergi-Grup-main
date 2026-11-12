@@ -58,6 +58,9 @@ button, label[for="wordFile"] { -webkit-tap-highlight-color: transparent; }
 }
 
 .back-link:hover, .text-button:hover { color: var(--orange-dark); }
+.topbar-actions { display: flex; align-items: center; gap: 18px; }
+.logout-button { padding: 9px 13px; border: 1px solid var(--line); border-radius: 10px 10px 10px 3px; color: var(--blue); background: transparent; font-size: 13px; font-weight: 750; cursor: pointer; }
+.logout-button:hover, .logout-button:focus-visible { border-color: #dfa653; outline: none; color: var(--orange-dark); background: #fffaf1; }
 
 .admin-shell { width: min(1380px, calc(100% - 48px)); margin: 0 auto; padding: 48px 0 72px; }
 
@@ -219,6 +222,8 @@ button, label[for="wordFile"] { -webkit-tap-highlight-color: transparent; }
     .admin-brand img { width: 145px; }
     .admin-brand span { padding-left: 12px; font-size: 14px; }
     .back-link { font-size: 13px; }
+    .topbar-actions { gap: 10px; }
+    .logout-button { padding: 8px 10px; font-size: 12px; }
     .admin-shell { width: min(100% - 32px, 620px); padding: 34px 0 48px; }
     .page-heading { align-items: flex-start; flex-direction: column; gap: 15px; }
     .page-description { font-size: 15px; }

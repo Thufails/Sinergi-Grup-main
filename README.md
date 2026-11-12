@@ -19,7 +19,7 @@ Situs profil Sinergi Business Solution / Sinergi Group dibuat dengan HTML, CSS, 
 - [Menambah atau memperbarui artikel](#menambah-atau-memperbarui-artikel)
 - [Status draf dan publikasi](#status-draf-dan-publikasi)
 - [Daftar isi dan rekomendasi artikel](#daftar-isi-dan-rekomendasi-artikel)
-- [Prototipe editor admin lokal](#prototipe-editor-admin-lokal)
+- [Login dan editor admin](#login-dan-editor-admin)
 - [Pemeriksaan sebelum publikasi](#pemeriksaan-sebelum-publikasi)
 
 ## Struktur proyek
@@ -31,7 +31,7 @@ Situs profil Sinergi Business Solution / Sinergi Group dibuat dengan HTML, CSS, 
 | `blog.html` | Daftar artikel hasil build |
 | `artikel/articles.mjs` | Sumber data dan isi seluruh artikel |
 | `artikel/<slug>.html` | Halaman detail artikel hasil build |
-| `admin/index.html` | Prototipe lokal editor artikel; belum terhubung ke login atau penerbitan |
+| `admin/index.html` | Editor artikel di balik login admin |
 | `templates/` | Template halaman artikel dan daftar artikel |
 | `scripts/build-articles.mjs` | Generator halaman artikel statis |
 | `css/style.css` | Tampilan dan komponen visual |
@@ -42,7 +42,7 @@ Situs profil Sinergi Business Solution / Sinergi Group dibuat dengan HTML, CSS, 
 
 ## Menjalankan situs
 
-**Kebutuhan:** VS Code dengan ekstensi Live Server untuk melihat situs lokal, serta Node.js versi LTS untuk membuat ulang halaman artikel. Tidak perlu menjalankan `npm install`: generator memakai modul bawaan Node.js dan editor admin memuat pustaka Word dari CDN saat dibuka. Karena itu, fitur impor/ekspor Word memerlukan koneksi internet.
+**Kebutuhan:** VS Code dengan ekstensi Live Server untuk melihat situs lokal, serta Node.js versi LTS untuk membuat ulang halaman artikel dan paket Cloudflare. Tidak perlu menjalankan `npm install`: generator memakai modul bawaan Node.js dan editor admin memuat pustaka Word dari CDN saat dibuka. Karena itu, fitur impor/ekspor Word memerlukan koneksi internet.
 
 Untuk melihat situs di komputer sendiri, buka folder ini di VS Code dan jalankan Live Server dari `index.html`. Server lokal membantu halaman dan tautan bekerja seperti saat di-hosting.
 
@@ -121,15 +121,25 @@ npm run build:articles
 - Rekomendasi di akhir artikel mengutamakan kategori yang sama, lalu menggunakan kesamaan `topics` untuk menentukan urutan.
 - Artikel draf tidak dimasukkan dalam rekomendasi.
 
-## Prototipe editor admin lokal
+## Login dan editor admin
 
-### Membuka editor
+### Membuka halaman admin
 
-1. Buka folder proyek di VS Code.
-2. Jalankan Live Server dari `index.html` atau `blog.html`.
-3. Buka alamat lokal `/admin/` (misalnya `http://127.0.0.1:5500/admin/`). Bisa juga klik kanan `admin/index.html` lalu pilih **Open with Live Server**.
+Di Cloudflare Pages, buka `/admin/login.html`; setelah login, panel editor tersedia di `/admin/`. Pages Functions memeriksa sesi bertanda tangan server-side sebelum melayani panel dan aset admin. Tanpa konfigurasi kredensial, login gagal tertutup dan panel tidak bisa dibuka.
 
-> Panel ini belum ditautkan dari navigasi publik. Ini prototipe lokal untuk mencoba alur penulisan, bukan halaman admin yang aman untuk hosting.
+Untuk melihat tampilan lokal, buka `admin/login.html` lewat Live Server. Live Server statis tidak menjalankan Pages Functions, jadi login hanya berfungsi pada deployment Cloudflare atau lingkungan Functions lokal yang diberi secret.
+
+### Menyiapkan kredensial Cloudflare
+
+Di dashboard Cloudflare, buka **Workers & Pages → sinergi-grup-main → Settings → Variables and Secrets**. Tambahkan:
+
+| Nama | Jenis | Nilai |
+|---|---|---|
+| `ADMIN_EMAIL` | Variable | Email admin yang dipilih pemilik |
+| `ADMIN_PASSWORD` | Secret terenkripsi | Kata sandi unik, minimal 16 karakter |
+| `ADMIN_SESSION_SECRET` | Secret terenkripsi | Nilai acak minimal 32 karakter untuk menandatangani sesi |
+
+Atur variabel untuk **Production** (dan Preview bila diperlukan). Simpan password dan secret langsung di dashboard Cloudflare; jangan masukkan ke GitHub atau kirim lewat chat. Setelah konfigurasi tersedia, jalankan deployment baru agar login dapat digunakan. Jika deployment dibuat sebelum pengaturan ini, halaman login akan menampilkan bahwa login belum disiapkan.
 
 ### Menggunakan editor
 
@@ -137,19 +147,15 @@ npm run build:articles
 - **Impor Word** memasukkan judul dan isi dari berkas `.docx` ke formulir. Metadata dan foto sampul dilengkapi di halaman admin; foto yang tertanam di Word belum diimpor.
 - Toolbar editor dipakai untuk mengatur paragraf, subjudul, tebal/miring, daftar, dan kutipan.
 - **Pratinjau** menampilkan tampilan artikel.
-- **Simpan draf** menyimpan ke penyimpanan browser pada perangkat itu saja. Dari daftar draf, tombol **Edit** memuat draf kembali ke editor dan **Hapus** menghapusnya setelah konfirmasi. **Unduh draf JSON** membuat cadangan.
+- **Simpan draf** menyimpan ke localStorage browser pada perangkat itu saja. Dari daftar draf, tombol **Edit** memuat draf kembali ke editor dan **Hapus** menghapusnya setelah konfirmasi. **Unduh draf JSON** membuat cadangan.
 - **Ekspor Word** mengunduh naskah untuk arsip atau review.
-- Tombol **Terbitkan** sengaja belum aktif. Prototipe ini belum punya login server atau penyimpanan hosting, dan folder `admin/` jangan diunggah ke situs publik sebelum autentikasi dipasang.
+- Tombol **Terbitkan** masih nonaktif. Login sudah diperiksa server-side, tetapi artikel belum disimpan ke database dan belum terhubung ke halaman publik.
 
 Impor Word memetakan gaya `Title` menjadi judul dan `Heading 1` menjadi subjudul. Format dokumen Word yang rumit bisa perlu dirapikan kembali di editor. Panel memuat Mammoth.js dan docx.js dari CDN, jadi koneksi internet diperlukan untuk impor, ekspor, dan mengunduh template. Bila CDN gagal dimuat, muat ulang halaman setelah koneksi tersedia.
 
 ### Koneksi hosting dan penerbitan
 
-Saat ini panel **belum terhubung** ke login, database, file `artikel/articles.mjs`, generator artikel, atau hosting. Draf hanya tersimpan di localStorage browser yang sedang dipakai; JSON yang diunduh adalah cadangan, bukan berkas yang otomatis diterbitkan. Foto sampul yang dipilih hanya untuk pratinjau dan belum diunggah.
-
-Keterangan batasan ini ditampilkan sebagai catatan kecil di bawah halaman admin, bukan sebagai banner besar.
-
-Jadi, alur terbit saat ini tetap melalui `artikel/articles.mjs`, kemudian jalankan `npm run build` dan unggah hasil build. Jangan unggah folder `admin/` ke hosting publik sebelum alur autentikasi dan penyimpanan server diterapkan. Setelah target hosting dipastikan (misalnya cPanel atau Cloudflare), barulah koneksi login, penyimpanan artikel/gambar, dan publikasi bisa dirancang sesuai dukungan platform tersebut.
+Untuk sementara, gunakan alur terbit yang sudah ada: ubah `artikel/articles.mjs`, jalankan `npm run build`, lalu push ke branch `main`. Panel admin sudah dapat dibuka dengan login di Cloudflare, tetapi draf masih tersimpan di localStorage browser yang sedang digunakan. Panel belum menyimpan draf lintas perangkat, mengunggah foto, atau menerbitkan langsung.
 
 ### Deploy situs publik ke Cloudflare Pages lewat GitHub
 
@@ -163,14 +169,16 @@ Untuk proyek Pages yang terhubung ke repository GitHub ini, gunakan pengaturan b
 | Build output directory | `dist` |
 | Root directory | Kosongkan (root repository) |
 
-Perintah tersebut membangun ulang artikel lalu menyalin halaman publik beserta CSS, JavaScript, dan gambar ke `dist/`. Folder `admin/`, sumber artikel, dan berkas pengembangan tidak masuk ke deployment publik. Setiap push ke branch produksi akan memicu build dan deployment baru.
+Perintah tersebut membangun ulang artikel lalu menyalin halaman publik, login dan editor admin, CSS, JavaScript, gambar, serta `_routes.json` ke `dist/`. Pages Functions di `functions/` memeriksa sesi untuk `/admin/*` dan `/api/admin/*`; endpoint login berada di `/api/auth/*`. Setiap push ke branch produksi akan memicu build dan deployment baru.
+
+> **Catatan keamanan:** halaman admin memang ikut deployment, tetapi middleware melindungi konten dan aset panel. Jangan menghapus `functions/` atau rute admin dari `_routes.json`. Untuk menghindari percobaan kata sandi berulang, aktifkan aturan rate limiting Cloudflare untuk `POST /api/auth/login` sebelum penggunaan rutin.
 
 ## Pemeriksaan sebelum publikasi
 
 - Periksa fakta, ejaan, judul, ringkasan, kategori, dan tautan.
 - Pastikan foto benar-benar sesuai dengan topik dan teks alternatifnya menjelaskan isi foto.
 - Jalankan `npm run build`, lalu buka `blog.html` dan halaman detail hasilnya.
-- Saat mengunggah situs, sertakan halaman HTML serta folder `css/`, `js/`, dan `images/` yang dirujuk halaman.
+- Untuk deployment Cloudflare Pages, gunakan `npm run build:cloudflare` dan output `dist`; jangan unggah folder sumber secara manual sebagai pengganti build tersebut.
 
 ## Identitas visual
 

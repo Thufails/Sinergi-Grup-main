@@ -443,6 +443,15 @@
     document.getElementById("exportWordButton").addEventListener("click", exportWord);
     document.getElementById("downloadJsonButton").addEventListener("click", downloadArticleJson);
     document.getElementById("newArticleButton").addEventListener("click", resetForm);
+    document.getElementById("logoutButton").addEventListener("click", async function () {
+        try {
+            await fetch("/api/auth/logout", { method: "POST", credentials: "same-origin" });
+        } catch (error) {
+            // The login page remains protected and will reject an invalid session.
+        } finally {
+            window.location.replace("/admin/login.html");
+        }
+    });
     document.getElementById("closePreviewButton").addEventListener("click", function () { previewDialog.close(); });
     document.getElementById("downloadTemplateButton").addEventListener("click", async function () {
         if (!window.docx) {

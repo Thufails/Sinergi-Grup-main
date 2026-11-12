@@ -1,4 +1,4 @@
-import { cp, mkdir, readdir, rm } from "node:fs/promises";
+import { cp, mkdir, readdir, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -25,6 +25,8 @@ for (const assetDirectory of ["css", "js", "images"]) {
     await cp(path.join(projectRoot, assetDirectory), path.join(outputDirectory, assetDirectory), { recursive: true });
 }
 
+await cp(path.join(projectRoot, "admin"), path.join(outputDirectory, "admin"), { recursive: true });
+
 const sourceArticles = path.join(projectRoot, "artikel");
 const outputArticles = path.join(outputDirectory, "artikel");
 await mkdir(outputArticles, { recursive: true });
@@ -35,4 +37,9 @@ for (const article of articlePages) {
     await cp(path.join(sourceArticles, article.name), path.join(outputArticles, article.name));
 }
 
-console.log(`Packaged ${rootPages.length} site pages and ${articlePages.length} article pages for Cloudflare in dist/ (admin excluded).`);
+await writeFile(
+    path.join(outputDirectory, "_routes.json"),
+    JSON.stringify({ version: 1, include: ["/admin", "/admin/*", "/api/auth/*", "/api/admin/*"], exclude: [] }, null, 2) + "\n",
+);
+
+console.log(`Packaged ${rootPages.length} site pages, ${articlePages.length} article pages, and a protected admin area for Cloudflare in dist/.`);

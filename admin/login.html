@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="theme-color" content="#0B2B4D">
+    <title>Login Admin | Sinergi</title>
+    <link rel="stylesheet" href="login.css">
+    <script defer src="login.js"></script>
+</head>
+<body>
+    <main class="login-shell">
+        <a class="login-brand" href="../index.html" aria-label="Kembali ke Sinergi Business Solution">
+            <img src="../images/SBS%20BARU.png" alt="Sinergi Business Solution">
+        </a>
+        <section class="login-card" aria-labelledby="loginTitle">
+            <p class="login-eyebrow">RUANG ADMIN</p>
+            <h1 id="loginTitle">Masuk ke Ruang Artikel</h1>
+            <p class="login-description">Masuk untuk mengelola naskah artikel Sinergi.</p>
+            <form id="loginForm" method="post" action="/api/auth/login" novalidate>
+                <label for="loginEmail">Email admin</label>
+                <input id="loginEmail" name="email" type="email" autocomplete="username" required maxlength="254">
+                <label for="loginPassword">Kata sandi</label>
+                <input id="loginPassword" name="password" type="password" autocomplete="current-password" required maxlength="256">
+                <p id="loginMessage" class="login-message" role="status" aria-live="polite"></p>
+                <button id="loginButton" type="submit">Masuk</button>
+            </form>
+            <a class="public-link" href="../blog.html">Kembali ke halaman artikel</a>
+        </section>
+        <p class="login-footnote">Akses ini khusus untuk pengelola konten.</p>
+    </main>
+</body>
+</html>
