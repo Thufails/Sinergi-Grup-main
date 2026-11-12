@@ -131,15 +131,27 @@ Untuk melihat tampilan lokal, buka `admin/login.html` lewat Live Server. Live Se
 
 ### Menyiapkan kredensial Cloudflare
 
-Di dashboard Cloudflare, buka **Workers & Pages → sinergi-grup-main → Settings → Variables and Secrets**. Tambahkan:
+Di dashboard Cloudflare, buka **Workers & Pages → sinergi-grup-main → Settings → Variables and Secrets** dan pilih environment **Production**. Tambahkan:
 
 | Nama | Jenis | Nilai |
 |---|---|---|
 | `ADMIN_EMAIL` | Variable | Email admin yang dipilih pemilik |
 | `ADMIN_PASSWORD` | Secret terenkripsi | Kata sandi unik, minimal 8 karakter |
-| `ADMIN_SESSION_SECRET` | Secret terenkripsi | Nilai acak minimal 32 karakter untuk menandatangani sesi |
+| `ADMIN_SESSION_SECRET` | Secret terenkripsi | Kunci acak minimal 32 karakter untuk menandatangani sesi login |
 
-Atur variabel untuk **Production** (dan Preview bila diperlukan). Simpan password dan secret langsung di dashboard Cloudflare; jangan masukkan ke GitHub atau kirim lewat chat. Setelah konfigurasi tersedia, jalankan deployment baru agar login dapat digunakan. Jika deployment dibuat sebelum pengaturan ini, halaman login akan menampilkan bahwa login belum disiapkan.
+Buat kunci sesi acak dari PowerShell atau terminal VS Code dengan Node.js:
+
+```powershell
+node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+```
+
+Perintah tersebut menghasilkan 64 karakter acak. Salin hasilnya ke nilai `ADMIN_SESSION_SECRET` di Cloudflare. Kunci ini bukan password untuk login dan tidak perlu dihafalkan.
+
+Simpan password dan secret langsung di dashboard Cloudflare; jangan masukkan ke GitHub atau kirim lewat chat. Setelah semua nilai disimpan, buat deployment baru agar Pages Functions memakai pengaturan terbaru. Jika project Pages dibuat ulang, ketiga nilainya harus dimasukkan kembali. Bila login belum dikonfigurasi atau ada nilai yang terlalu pendek, halaman login akan menampilkan pesan bahwa pengaturan belum aktif.
+
+Biarkan `ADMIN_SESSION_SECRET` tetap sama dari satu deployment ke deployment berikutnya. Sesi login berlaku maksimal 8 jam; setelah kedaluwarsa, admin harus login lagi. Mengganti kunci sesi membatalkan semua sesi aktif sehingga admin perlu login kembali. Ganti kunci jika ada alasan keamanan, misalnya nilainya terungkap.
+
+File `.env` atau `.dev.vars` hanya diperlukan bila menjalankan Pages Functions secara lokal dengan Wrangler. File lokal itu tidak mengatur deployment Production dan tidak boleh di-commit ke GitHub. Untuk situs online, simpan kredensial melalui **Variables and Secrets** Cloudflare.
 
 ### Menggunakan editor
 
