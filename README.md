@@ -19,6 +19,7 @@ Situs profil Sinergi Business Solution / Sinergi Group dibuat dengan HTML, CSS, 
 - [Menambah atau memperbarui artikel](#menambah-atau-memperbarui-artikel)
 - [Status draf dan publikasi](#status-draf-dan-publikasi)
 - [Daftar isi dan rekomendasi artikel](#daftar-isi-dan-rekomendasi-artikel)
+- [Prototipe editor admin lokal](#prototipe-editor-admin-lokal)
 - [Pemeriksaan sebelum publikasi](#pemeriksaan-sebelum-publikasi)
 
 ## Struktur proyek
@@ -30,6 +31,7 @@ Situs profil Sinergi Business Solution / Sinergi Group dibuat dengan HTML, CSS, 
 | `blog.html` | Daftar artikel hasil build |
 | `artikel/articles.mjs` | Sumber data dan isi seluruh artikel |
 | `artikel/<slug>.html` | Halaman detail artikel hasil build |
+| `admin/index.html` | Prototipe lokal editor artikel; belum terhubung ke login atau penerbitan |
 | `templates/` | Template halaman artikel dan daftar artikel |
 | `scripts/build-articles.mjs` | Generator halaman artikel statis |
 | `css/style.css` | Tampilan dan komponen visual |
@@ -40,7 +42,7 @@ Situs profil Sinergi Business Solution / Sinergi Group dibuat dengan HTML, CSS, 
 
 ## Menjalankan situs
 
-**Kebutuhan:** Node.js versi LTS untuk menjalankan generator artikel. Proyek ini tidak memakai dependensi npm tambahan dan saat ini belum memiliki perintah `npm run dev`.
+**Kebutuhan:** VS Code dengan ekstensi Live Server untuk melihat situs lokal, serta Node.js versi LTS untuk membuat ulang halaman artikel. Tidak perlu menjalankan `npm install`: generator memakai modul bawaan Node.js dan editor admin memuat pustaka Word dari CDN saat dibuka. Karena itu, fitur impor/ekspor Word memerlukan koneksi internet.
 
 Untuk melihat situs di komputer sendiri, buka folder ini di VS Code dan jalankan Live Server dari `index.html`. Server lokal membantu halaman dan tautan bekerja seperti saat di-hosting.
 
@@ -118,6 +120,36 @@ npm run build:articles
 - Daftar isi dibuat otomatis dari heading `<h2>` ketika artikel memiliki setidaknya tiga subjudul.
 - Rekomendasi di akhir artikel mengutamakan kategori yang sama, lalu menggunakan kesamaan `topics` untuk menentukan urutan.
 - Artikel draf tidak dimasukkan dalam rekomendasi.
+
+## Prototipe editor admin lokal
+
+### Membuka editor
+
+1. Buka folder proyek di VS Code.
+2. Jalankan Live Server dari `index.html` atau `blog.html`.
+3. Buka alamat lokal `/admin/` (misalnya `http://127.0.0.1:5500/admin/`). Bisa juga klik kanan `admin/index.html` lalu pilih **Open with Live Server**.
+
+> Panel ini belum ditautkan dari navigasi publik. Ini prototipe lokal untuk mencoba alur penulisan, bukan halaman admin yang aman untuk hosting.
+
+### Menggunakan editor
+
+- **Unduh template** membuat dokumen Word contoh dengan gaya judul dan subjudul yang dapat dibaca saat impor.
+- **Impor Word** memasukkan judul dan isi dari berkas `.docx` ke formulir. Metadata dan foto sampul dilengkapi di halaman admin; foto yang tertanam di Word belum diimpor.
+- Toolbar editor dipakai untuk mengatur paragraf, subjudul, tebal/miring, daftar, dan kutipan.
+- **Pratinjau** menampilkan tampilan artikel.
+- **Simpan draf** menyimpan ke penyimpanan browser pada perangkat itu saja. Dari daftar draf, tombol **Edit** memuat draf kembali ke editor dan **Hapus** menghapusnya setelah konfirmasi. **Unduh draf JSON** membuat cadangan.
+- **Ekspor Word** mengunduh naskah untuk arsip atau review.
+- Tombol **Terbitkan** sengaja belum aktif. Prototipe ini belum punya login server atau penyimpanan hosting, dan folder `admin/` jangan diunggah ke situs publik sebelum autentikasi dipasang.
+
+Impor Word memetakan gaya `Title` menjadi judul dan `Heading 1` menjadi subjudul. Format dokumen Word yang rumit bisa perlu dirapikan kembali di editor. Panel memuat Mammoth.js dan docx.js dari CDN, jadi koneksi internet diperlukan untuk impor, ekspor, dan mengunduh template. Bila CDN gagal dimuat, muat ulang halaman setelah koneksi tersedia.
+
+### Koneksi hosting dan penerbitan
+
+Saat ini panel **belum terhubung** ke login, database, file `artikel/articles.mjs`, generator artikel, atau hosting. Draf hanya tersimpan di localStorage browser yang sedang dipakai; JSON yang diunduh adalah cadangan, bukan berkas yang otomatis diterbitkan. Foto sampul yang dipilih hanya untuk pratinjau dan belum diunggah.
+
+Keterangan batasan ini ditampilkan sebagai catatan kecil di bawah halaman admin, bukan sebagai banner besar.
+
+Jadi, alur terbit saat ini tetap melalui `artikel/articles.mjs`, kemudian jalankan `npm run build` dan unggah hasil build. Jangan unggah folder `admin/` ke hosting publik sebelum alur autentikasi dan penyimpanan server diterapkan. Setelah target hosting dipastikan (misalnya cPanel atau Cloudflare), barulah koneksi login, penyimpanan artikel/gambar, dan publikasi bisa dirancang sesuai dukungan platform tersebut.
 
 ## Pemeriksaan sebelum publikasi
 
