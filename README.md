@@ -151,6 +151,20 @@ Keterangan batasan ini ditampilkan sebagai catatan kecil di bawah halaman admin,
 
 Jadi, alur terbit saat ini tetap melalui `artikel/articles.mjs`, kemudian jalankan `npm run build` dan unggah hasil build. Jangan unggah folder `admin/` ke hosting publik sebelum alur autentikasi dan penyimpanan server diterapkan. Setelah target hosting dipastikan (misalnya cPanel atau Cloudflare), barulah koneksi login, penyimpanan artikel/gambar, dan publikasi bisa dirancang sesuai dukungan platform tersebut.
 
+### Deploy situs publik ke Cloudflare Pages lewat GitHub
+
+Untuk proyek Pages yang terhubung ke repository GitHub ini, gunakan pengaturan build berikut:
+
+| Pengaturan | Nilai |
+|---|---|
+| Framework preset | `None` |
+| Production branch | `main` |
+| Build command | `npm run build:cloudflare` |
+| Build output directory | `dist` |
+| Root directory | Kosongkan (root repository) |
+
+Perintah tersebut membangun ulang artikel lalu menyalin halaman publik beserta CSS, JavaScript, dan gambar ke `dist/`. Folder `admin/`, sumber artikel, dan berkas pengembangan tidak masuk ke deployment publik. Setiap push ke branch produksi akan memicu build dan deployment baru.
+
 ## Pemeriksaan sebelum publikasi
 
 - Periksa fakta, ejaan, judul, ringkasan, kategori, dan tautan.

@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "build": "node scripts/build-articles.mjs",
-    "build:articles": "node scripts/build-articles.mjs"
+    "build:articles": "node scripts/build-articles.mjs",
+    "build:cloudflare": "npm run build && node scripts/package-cloudflare.mjs"
   }
 }
