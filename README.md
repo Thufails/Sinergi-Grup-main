@@ -125,7 +125,7 @@ npm run build:articles
 
 ### Membuka halaman admin
 
-Di Cloudflare Pages, buka `/admin/login.html`; setelah login, panel editor tersedia di `/admin/`. Pages Functions memeriksa sesi bertanda tangan server-side sebelum melayani panel dan aset admin. Tanpa konfigurasi kredensial, login gagal tertutup dan panel tidak bisa dibuka.
+Di Cloudflare Pages, buka `/admin/login.html` (atau `/admin/login`); setelah login, panel editor tersedia di `/admin/`. Pages Functions memeriksa sesi bertanda tangan server-side sebelum melayani panel dan aset admin. Tanpa konfigurasi kredensial, login gagal tertutup dan panel tidak bisa dibuka.
 
 Untuk melihat tampilan lokal, buka `admin/login.html` lewat Live Server. Live Server statis tidak menjalankan Pages Functions, jadi login hanya berfungsi pada deployment Cloudflare atau lingkungan Functions lokal yang diberi secret.
 

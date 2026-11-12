@@ -1,7 +1,12 @@
 import { hasValidSession, jsonResponse } from "./_lib/auth.js";
 
-const publicAdminPaths = new Set([
+const loginPagePaths = new Set([
+    "/admin/login",
     "/admin/login.html",
+]);
+
+const publicAdminPaths = new Set([
+    ...loginPagePaths,
     "/admin/login.css",
     "/admin/login.js",
 ]);
@@ -19,7 +24,7 @@ export async function onRequest(context) {
     }
 
     if (isAdminPage && publicAdminPaths.has(url.pathname)) {
-        if (url.pathname === "/admin/login.html" && authenticated) {
+        if (loginPagePaths.has(url.pathname) && authenticated) {
             return Response.redirect(new URL("/admin/", url), 302);
         }
         return context.next();
