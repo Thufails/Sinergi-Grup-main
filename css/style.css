@@ -113,31 +113,6 @@ textarea {
     backdrop-filter: blur(14px);
 }
 
-.topbar {
-    color: rgba(255, 255, 255, .78);
-    background: var(--navy-deep);
-    font-size: 16px;
-    letter-spacing: .025em;
-}
-
-.topbar-inner {
-    min-height: 34px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.topbar a {
-    flex: 0 0 auto;
-    color: var(--orange);
-    font-weight: 700;
-}
-
-.topbar a span {
-    padding-left: 4px;
-}
-
 .nav-container {
     position: relative;
     min-height: 82px;
@@ -1785,20 +1760,6 @@ textarea {
         padding: 72px 0;
     }
 
-    .topbar {
-        font-size: 12px;
-    }
-
-    .topbar-inner {
-        min-height: 34px;
-        gap: 10px;
-    }
-
-    .topbar-inner > span {
-        max-width: 72%;
-        line-height: 1.35;
-    }
-
     .nav-container {
         min-height: 70px;
     }
@@ -1917,15 +1878,6 @@ textarea {
 
     .section {
         padding: 58px 0;
-    }
-
-    .topbar-inner > span {
-        max-width: 67%;
-    }
-
-    .topbar a {
-        font-size: 11px;
-        white-space: nowrap;
     }
 
     .hero h1 {
@@ -2246,10 +2198,6 @@ textarea {
 }
 
 @media (max-width: 380px) {
-    .topbar-inner > span {
-        max-width: 62%;
-    }
-
     .brand-logo {
         width: 148px;
     }
